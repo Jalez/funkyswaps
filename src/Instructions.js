@@ -1,16 +1,10 @@
 /** @format */
 
 import { useTheme } from '@emotion/react';
-import {
-	Description,
-	KeyboardArrowLeft,
-	KeyboardArrowRight,
-} from '@mui/icons-material';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import { Button, MobileStepper, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import Heading from './Heading.js';
-import Image from './Image.jsx';
 
 const steps = [
 	{
@@ -36,7 +30,7 @@ const steps = [
 					Click on the{' '}
 					<span
 						style={{
-							backgroundColor: '#274c77',
+							backgroundColor: '#35393C',
 							color: 'white',
 							width: '3rem',
 							padding: '0.5rem',

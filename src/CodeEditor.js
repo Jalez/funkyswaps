@@ -19,7 +19,6 @@ export default function CodeEditor({
 			'newBadges = //Your function here'
 	);
 	const buttonClickHandler = () => {
-		let currentBadges;
 		let newBadges;
 		try {
 			if (code.includes('document'))
@@ -30,22 +29,35 @@ export default function CodeEditor({
 				alert(
 					'Why are you trying to fetch something..? Aborting code execution.'
 				);
+			else if (
+				code.includes('for') ||
+				code.includes('while') ||
+				code.includes('forEach')
+			)
+				alert('Normal loops are not allowed.');
+			else if (
+				!code.includes('map') &&
+				!code.includes('filter') &&
+				!code.includes('reduce')
+			)
+				alert('Your code MUST use map, filter or reduce.');
 			// eslint-disable-next-line no-eval
 			else eval(code);
-
-			if (JSON.stringify(newBadges) !== JSON.stringify(badges)) {
-				// Add new badges to history
-				const newHistory = history.slice(
-					0,
-					history.findIndex((oldBadges) => oldBadges === badges) + 1
-				);
-				newHistory.push(newBadges);
-				historyChanger([...newHistory]);
-				// Change current badges
-				badgeChanger(newBadges);
-				let [firstLine, ...rest] = code.split(/\r?\n/);
-				firstLine = 'currentBadges = ' + JSON.stringify(newBadges);
-				setCode(firstLine + '\n' + rest);
+			if (newBadges) {
+				if (JSON.stringify(newBadges) !== JSON.stringify(badges)) {
+					// Add new badges to history
+					const newHistory = history.slice(
+						0,
+						history.findIndex((oldBadges) => oldBadges === badges) + 1
+					);
+					newHistory.push(newBadges);
+					historyChanger([...newHistory]);
+					// Change current badges
+					badgeChanger(newBadges);
+					let [firstLine, ...rest] = code.split(/\r?\n/);
+					firstLine = 'currentBadges = ' + JSON.stringify(newBadges);
+					setCode(firstLine + '\n' + rest);
+				}
 			}
 		} catch (error) {
 			throw new Error(error);

@@ -24,11 +24,6 @@ function App() {
 		8: false,
 		9: false,
 		10: false,
-		11: false,
-		12: false,
-		13: false,
-		14: false,
-		15: false,
 	});
 
 	useEffect(() => {
@@ -102,7 +97,7 @@ function App() {
 								<LevelControls
 									currentlevel={level}
 									levelHandler={handleLevel}
-									maxLevels={15}
+									maxLevels={10}
 								/>
 								<CompletedMark isCompleted={completedLevels[level]} />
 							</div>

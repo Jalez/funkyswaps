@@ -25,42 +25,47 @@ const HistoryControls = ({ history, historyChanger, badgeChanger, badges }) => {
 	};
 
 	return (
-		<ButtonGroup
-			variant='contained'
-			aria-label='history button group'
-			color='primary'
-			sx={{
-				display: 'flex',
-				flexDirection: 'row',
-				alignContent: 'center',
-				justifyContent: 'space-between',
-				flexWrap: 'wrap',
-				borderRadius: '0',
-				bgcolor: '#35393C',
-			}}>
-			<Button
-				sx={{ flex: '1 1 auto' }}
-				// color='secondary'
-				onClick={undoButtonClickHandler}
-				disabled={currentIndex <= 0}>
-				<UndoIcon style={{ width: '2rem', height: '2rem' }} />
-			</Button>
-			<Button
-				onClick={resetButtonClickHandler}
-				sx={{ flex: '1 1 auto' }}
-				disabled={currentIndex === 0}
-				// color='secondary'
-			>
-				Reset
-			</Button>
+		<>
+			<div style={{ fontSize: '2rem', color: 'white' }}>
+				Number of swaps: {currentIndex}
+			</div>
+			<ButtonGroup
+				variant='contained'
+				aria-label='history button group'
+				color='primary'
+				sx={{
+					display: 'flex',
+					flexDirection: 'row',
+					alignContent: 'center',
+					justifyContent: 'space-between',
+					flexWrap: 'wrap',
+					borderRadius: '0',
+					bgcolor: '#35393C',
+				}}>
+				<Button
+					sx={{ flex: '1 1 auto' }}
+					// color='secondary'
+					onClick={undoButtonClickHandler}
+					disabled={currentIndex <= 0}>
+					<UndoIcon style={{ width: '2rem', height: '2rem' }} />
+				</Button>
+				<Button
+					onClick={resetButtonClickHandler}
+					sx={{ flex: '1 1 auto' }}
+					disabled={currentIndex === 0}
+					// color='secondary'
+				>
+					Reset
+				</Button>
 
-			<Button
-				sx={{ flex: '1 1 auto' }}
-				onClick={redoButtonClickHandler}
-				disabled={currentIndex === history.length - 1}>
-				<RedoIcon style={{ width: '2rem', height: '2rem' }} />
-			</Button>
-		</ButtonGroup>
+				<Button
+					sx={{ flex: '1 1 auto' }}
+					onClick={redoButtonClickHandler}
+					disabled={currentIndex === history.length - 1}>
+					<RedoIcon style={{ width: '2rem', height: '2rem' }} />
+				</Button>
+			</ButtonGroup>
+		</>
 	);
 };
 

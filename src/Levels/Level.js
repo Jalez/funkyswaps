@@ -6,8 +6,6 @@ import React, { useEffect, useState } from 'react';
 import GameBoard from '../GameBoard.js';
 // Game board in Array form
 import GameArrays from '../GameArrays.js';
-// All controls reside here
-import ControlBoard from '../ControlBoard.js';
 // Details specific controls
 import Controls from '../Controls.js';
 // Controls for history

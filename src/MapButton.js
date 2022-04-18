@@ -51,11 +51,13 @@ const MapButton = ({
 				return b_i === from ? newBadges.push(to) : newBadges.push(b_i);
 			});
 			newBadges = cleanupArray(newBadges);
-			// Add new badges to history
-			newHistory.push(newBadges);
-			historyChanger([...newHistory]);
-			// Change current badges
-			badgeChanger(newBadges);
+			if (JSON.stringify(newBadges) !== JSON.stringify(badges)) {
+				// Add new badges to history
+				newHistory.push(newBadges);
+				historyChanger([...newHistory]);
+				// Change current badges
+				badgeChanger(newBadges);
+			}
 		}
 	};
 
@@ -69,7 +71,7 @@ const MapButton = ({
 			<ArrowForwardIcon
 				style={{ width: '2rem', height: '2rem', color: 'white' }}
 			/>
-			<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+			<Box sx={{ display: 'flex', flexDirection: 'column-reverse' }}>
 				{Array.isArray(to) ? (
 					to.map((t, i) => <Icon key={i} iconName={t} size={2} opacity={1} />)
 				) : (
